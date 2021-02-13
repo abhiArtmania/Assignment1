@@ -5,7 +5,7 @@ Used -
 2. Redux
 
 How to run this project -
-1 step: Clone the repository.
-2 step: cd
-3 step: npm i
-4 step: npm start
+1. Clone the repository. - git clone https://github.com/abhiArtmania/Assignment1.git
+2. cd Assignment1
+3. npm i
+4. npm start
