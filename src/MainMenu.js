@@ -6,7 +6,7 @@ class MainMenu extends Component {
     return (
       <div className='main-menu'>
         <Link to="/">
-          <button>Home</button>
+          <button>Assignment</button>
         </Link>
         <Link to="/about">
           <button>About</button>

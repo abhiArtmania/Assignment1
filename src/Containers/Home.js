@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Header from './Header'
-import { fetchData } from '../Actions/home'
+import { fetchData, updateList } from '../Actions/home'
 import { bindActionCreators } from 'redux'
+import DragDropComponent from '../Components/DragDropComponent'
+import { homeActionType } from '../Constants'
 
 const mapStateToProps = (state) => {
+  const tableData = JSON.parse(state.home.tableData)
   return {
-    userInfo:state.home.user
+    dragTableData:tableData.dragTableData,
+    dropTableData: tableData.dropTableData
   }
-}
-
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators(
-    {
-      fetchData
-    },
-    dispatch
-  )
 }
 
 class Home extends Component {
@@ -27,20 +22,26 @@ class Home extends Component {
     }
   }
 
-  componentWillMount(){
-    this.props.fetchData()
-  }
-
   render() {
+    const { dragTableData, dropTableData } = this.props
     return (
       <div className="home">
         <Header/>
         <div className='wrapper'>
-          Home
+          <DragDropComponent
+            dropTableData={dropTableData}
+            dragTableData={dragTableData}
+            updateData={(str)=>{
+              this.props.dispatch({
+                type:homeActionType.UPDATE_DATA,
+                payload:str
+              })
+            }}
+          />
         </div>
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps)(Home);

@@ -8,8 +8,7 @@ class Header extends Component {
       <div className="app-header">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h4 className="App-title">Welcome to React</h4>
-          <MainMenu/>
+          <h4 className="App-title">Assignment</h4>
         </header>
       </div>
     );
